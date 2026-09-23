@@ -1,0 +1,52 @@
+name: CSS Measurements and Colors Autograding
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+jobs:
+  autograding:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Test 1 - Heading
+        run: npx jest -t "Main heading exists"
+
+      - name: Test 2 - Box Class
+        run: npx jest -t "Box class exists"
+
+      - name: Test 3 - Box Width
+        run: npx jest -t "Box width is 400px"
+
+      - name: Test 4 - Box Height
+        run: npx jest -t "Box height is 200px"
+
+      - name: Test 5 - Border
+        run: npx jest -t "Box has 3px solid darkblue border"
+
+      - name: Test 6 - Padding
+        run: npx jest -t "Box padding is 20px"
+
+      - name: Test 7 - Font Size
+        run: npx jest -t "Paragraph font size is 18px"
+
+      - name: Test 8 - Highlight Class
+        run: npx jest -t "Highlight class exists"
+
+      - name: Test 9 - Highlight Background
+        run: npx jest -t "Highlight background color is green"
+
+      - name: Test 10 - Highlight Text Color
+        run: npx jest -t "Highlight text color is white"
